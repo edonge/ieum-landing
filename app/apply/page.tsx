@@ -39,6 +39,9 @@ export default function PreRegisterPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  // 봇 차단 — honeypot + 페이지 로드 시각
+  const [honeypot, setHoneypot] = useState("");
+  const [loadedAt] = useState<number>(() => Date.now());
 
   useEffect(() => {
     track("apply_viewed");
@@ -94,6 +97,8 @@ export default function PreRegisterPage() {
           purpose,
           privacy_consent: true,
           privacy_consented_at: now,
+          hp_company: honeypot,
+          loaded_at: loadedAt,
           posthog_id,
           ...utm,
           referrer,
@@ -163,6 +168,20 @@ export default function PreRegisterPage() {
               </p>
 
               <form onSubmit={onSubmit} className="apply-form" noValidate>
+                {/* honeypot — 봇 차단용 숨김 필드. 사용자에게 안 보임. */}
+                <div aria-hidden className="apply-hp" tabIndex={-1}>
+                  <label htmlFor="apply-company">회사 (입력하지 마세요)</label>
+                  <input
+                    id="apply-company"
+                    type="text"
+                    name="company"
+                    autoComplete="off"
+                    tabIndex={-1}
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
+
                 <div className="apply-field">
                   <label htmlFor="apply-name">성함 또는 닉네임</label>
                   <input
@@ -494,6 +513,16 @@ export default function PreRegisterPage() {
 
         .apply-form {
           margin-top: 32px;
+        }
+
+        /* honeypot — 시각적으로 완전히 숨김 (봇만 채움) */
+        .apply-hp {
+          position: absolute;
+          left: -10000px;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
         }
 
         .apply-field {
