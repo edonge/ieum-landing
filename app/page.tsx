@@ -230,7 +230,7 @@ function RecordPointSection() {
             <p className="record-phone-copy">
               건강식품부터 생활용품까지,
               <br />
-              부모님께 필요한 선물을 준비할 수 있어요
+              부모님께 필요한 선물을 준비할 수{" "}있어요
             </p>
           </motion.div>
         </div>
@@ -317,7 +317,7 @@ function RecordPointSection() {
         }
 
         .record-phone-copy {
-          width: min(360px, 100%);
+          width: min(420px, 100%);
           margin: 0;
           color: #2b3340;
           text-align: center;
@@ -1556,9 +1556,9 @@ export default function LandingPage() {
                 </div>
               </div>
               <p className="phone-showcase-caption">
-                여기에 설명 문구가 들어갑니다
+                생각날 때 한번,
                 <br />
-                두 줄 정도로 보여줄 예정이에요
+                이음이 도와드릴게요.
               </p>
             </motion.div>
           </div>
