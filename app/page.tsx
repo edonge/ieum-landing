@@ -2824,7 +2824,7 @@ export default function LandingPage() {
             >
               무료로 신청하기
             </Link>
-            <a className="footer-cta-secondary" href="#contact">
+            <a className="footer-cta-secondary" href="/contact">
               문의하기
             </a>
           </div>
@@ -2842,7 +2842,7 @@ export default function LandingPage() {
             <p className="footer-description">
               가족의 순간을 부모님께 더 쉽게 전하는 서비스
             </p>
-            <a className="footer-contact" href="#contact">
+            <a className="footer-contact" href="/contact">
               문의하기
             </a>
             <p className="footer-policy">

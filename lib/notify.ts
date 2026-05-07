@@ -1,9 +1,11 @@
 type NotifyPayload = {
   subject: string;
   text: string;
+  /** 받은 메일에서 "답장"을 누르면 자동으로 들어갈 주소 */
+  replyTo?: string;
 };
 
-export async function notifyByEmail({ subject, text }: NotifyPayload) {
+export async function notifyByEmail({ subject, text, replyTo }: NotifyPayload) {
   const to = process.env.NOTIFY_EMAIL_TO;
   const apiKey = process.env.RESEND_API_KEY;
   if (!to || !apiKey) return;
@@ -19,6 +21,7 @@ export async function notifyByEmail({ subject, text }: NotifyPayload) {
       to,
       subject,
       text,
+      ...(replyTo ? { reply_to: replyTo } : {}),
     }),
   }).catch(() => {});
 }
