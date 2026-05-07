@@ -329,16 +329,13 @@ function RecordPointSection() {
           pointer-events: none;
         }
 
-        .record-phone .phone-frame,
-        .record-phone .phone-screen {
-          position: relative;
-        }
-
         .record-phone .phone-frame {
+          position: relative;
           z-index: 2;
         }
 
         .record-phone .phone-screen {
+          position: absolute;
           z-index: 3;
         }
 
