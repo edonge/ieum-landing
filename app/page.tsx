@@ -312,6 +312,36 @@ function RecordPointSection() {
           width: clamp(285px, 27vw, 350px);
         }
 
+        .record-phone .phone-device {
+          isolation: isolate;
+          filter: none;
+        }
+
+        .record-phone .phone-device::before {
+          position: absolute;
+          inset: 5% 6% 4%;
+          z-index: 0;
+          border-radius: 34px;
+          box-shadow:
+            -10px 14px 22px rgba(0, 0, 0, 0.09),
+            -24px 38px 34px rgba(0, 0, 0, 0.14);
+          content: "";
+          pointer-events: none;
+        }
+
+        .record-phone .phone-frame,
+        .record-phone .phone-screen {
+          position: relative;
+        }
+
+        .record-phone .phone-frame {
+          z-index: 2;
+        }
+
+        .record-phone .phone-screen {
+          z-index: 3;
+        }
+
         .record-phone-gift {
           margin-top: 0;
         }
